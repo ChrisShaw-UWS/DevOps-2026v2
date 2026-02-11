@@ -1,0 +1,122 @@
+[
+    {
+        "label": "calculate_race_times",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "format_time",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "test_format_time",
+        "kind": 2,
+        "importPath": "flask-app.tests.test_app",
+        "description": "flask-app.tests.test_app",
+        "peekOfCode": "def test_format_time():\n    # format_time should convert minutes to HH:MM:SS or MM:SS\n    assert format_time(0) == \"0:00\"\n    assert format_time(1) == \"1:00\"\n    assert format_time(10) == \"10:00\"\n    assert format_time(60) == \"1:00:00\"\n    assert format_time(181) == \"3:01:00\"\n    assert format_time(611) == \"10:11:00\"\ndef test_calculate_race_times():\n    # pace per km is 5 minutes",
+        "detail": "flask-app.tests.test_app",
+        "documentation": {}
+    },
+    {
+        "label": "test_calculate_race_times",
+        "kind": 2,
+        "importPath": "flask-app.tests.test_app",
+        "description": "flask-app.tests.test_app",
+        "peekOfCode": "def test_calculate_race_times():\n    # pace per km is 5 minutes\n    distance_result = {\n        \"5K\": \"25:00\",\n        \"10K\": \"50:00\",\n        \"Half Marathon\": \"1:45:29\",  # matches actual calculation\n        \"Marathon\": \"3:30:58\"        # matches actual calculation\n    }\n    result = calculate_race_times(5)  # 5 min/km pace\n    assert result == distance_result",
+        "detail": "flask-app.tests.test_app",
+        "documentation": {}
+    },
+    {
+        "label": "format_time",
+        "kind": 2,
+        "importPath": "flask-app.app",
+        "description": "flask-app.app",
+        "peekOfCode": "def format_time(minutes):\n    \"\"\"Converts a time in minutes to a string \n    in the format HH:MM:SS\n    Args:\n        minutes (int): Time in minutes\n    Returns:\n        str: Time in the format HH:MM:SS\n    \"\"\"\n    hours = int(minutes // 60)\n    remaining_minutes = int(minutes % 60)",
+        "detail": "flask-app.app",
+        "documentation": {}
+    },
+    {
+        "label": "parse_time",
+        "kind": 2,
+        "importPath": "flask-app.app",
+        "description": "flask-app.app",
+        "peekOfCode": "def parse_time(time_str):\n    \"\"\"Parses a time string in \n    the format HH:MM:SS or MM:SS to a float\n    Args:\n        time_str (str): Time string\n    Returns:\n        float: Time in minutes. \n    \"\"\"\n    try:\n        # Handle decimal format",
+        "detail": "flask-app.app",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_race_times",
+        "kind": 2,
+        "importPath": "flask-app.app",
+        "description": "flask-app.app",
+        "peekOfCode": "def calculate_race_times(pace_per_km):\n    \"\"\"Calculates the time to complete\n    a 5K, 10K, half marathon, and marathon\n    at the given pace.\n    Args:\n        pace_per_km (float): Pace in minutes per kilometer\n    Returns:\n        dict: Dictionary containing the time to complete a \n            5K, 10K, half marathon, and marathon\n    \"\"\"",
+        "detail": "flask-app.app",
+        "documentation": {}
+    },
+    {
+        "label": "convert",
+        "kind": 2,
+        "importPath": "flask-app.app",
+        "description": "flask-app.app",
+        "peekOfCode": "def convert():\n    data = request.json\n    pace = parse_time(data['pace'])\n    input_unit = data['unit']\n    if input_unit == 'mile':\n        km_pace = pace * 1.60934\n        race_times = calculate_race_times(km_pace)\n        return jsonify({\n            'converted_pace': format_time(km_pace),\n            'race_times': race_times",
+        "detail": "flask-app.app",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "flask-app.app",
+        "description": "flask-app.app",
+        "peekOfCode": "def home():\n    return render_template('index.html')\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "detail": "flask-app.app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "flask-app.app",
+        "description": "flask-app.app",
+        "peekOfCode": "app = Flask(__name__, template_folder='templates')\ndef format_time(minutes):\n    \"\"\"Converts a time in minutes to a string \n    in the format HH:MM:SS\n    Args:\n        minutes (int): Time in minutes\n    Returns:\n        str: Time in the format HH:MM:SS\n    \"\"\"\n    hours = int(minutes // 60)",
+        "detail": "flask-app.app",
+        "documentation": {}
+    }
+]
