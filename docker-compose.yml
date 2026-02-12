@@ -1,0 +1,7 @@
+services:
+  flask-app:
+    build:
+      context: flask-app
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'

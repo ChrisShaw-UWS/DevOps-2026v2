@@ -106,7 +106,7 @@
         "kind": 2,
         "importPath": "flask-app.app",
         "description": "flask-app.app",
-        "peekOfCode": "def home():\n    return render_template('index.html')\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "peekOfCode": "def home():\n    return render_template('index.html')\nif __name__ == '__main__':\n    app.run(host='0.0.0.0', port=8080, debug=False)",
         "detail": "flask-app.app",
         "documentation": {}
     },
