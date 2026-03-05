@@ -1,6 +1,6 @@
 services:
   flask-app:
-    image: <PLACEHOLDER-REPOSITORY>/<PLACEHOLDER-IMAGE>:latest
+    image: uwschriss/flask-app:latest
   nginx:
     image: nginx:latest
     ports:
