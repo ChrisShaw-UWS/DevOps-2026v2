@@ -59,7 +59,7 @@
 
     - name: Copy nginx config file
       copy:
-        src: ../DevOps-2026v2/nginx/
+        src: ../nginx/
         dest: /home/ubuntu/nginx/
         mode: '0644'
 
