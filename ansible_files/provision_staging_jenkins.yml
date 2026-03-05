@@ -121,7 +121,7 @@
   hosts: localhost
   connection: local
   vars:
-    duckdns_domain: uws-devops-staging
+    duckdns_domain: uws-devops-staging-b01841920
 
   tasks:
     - name: Get the EC2 IP from the previous stage
