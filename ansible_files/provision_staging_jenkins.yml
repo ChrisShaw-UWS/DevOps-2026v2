@@ -67,7 +67,8 @@
         mode: '0700'
         content: |
           #!/bin/bash
-          echo url="https://www.duckdns.org/update?domains={{ duckdns_domain }}&token={{ duckdns_api_token }}&ip=" | curl -k -o ~/duckdns/duck.log -K -
+          PUBLIC_IP=$(curl -s http://checkip.amazonaws.com)
+          echo url="https://www.duckdns.org/update?domains={{ duckdns_domain }}&token={{ duckdns_api_token }}&ip=$PUBLIC_IP" | curl -k -o ~/duckdns/duck.log -K -
 
     - name: Create the cron job to run every 5 minutes
       cron:
