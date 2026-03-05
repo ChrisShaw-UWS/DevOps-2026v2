@@ -51,9 +51,9 @@
         volumes: true
         builder_cache: true
 
-    - name: Copy docker-compose file from the parent directory
+    - name: Copy docker-compose file
       copy:
-        src: ../docker-compose-staging.yml
+        src: docker-compose-staging.yml
         dest: /home/ubuntu/docker-compose-staging.yml
         mode: '0644'
 
