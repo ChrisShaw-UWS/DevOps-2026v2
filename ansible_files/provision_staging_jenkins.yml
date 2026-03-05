@@ -9,7 +9,7 @@
     security_group: flask_running_app_staging_sg
     image_id: ami-0866a3c8686eaeeba
     region: us-east-1
-    
+
   tasks:
     - name: Launch T2 small instance on EC2
       ec2_instance:
@@ -40,18 +40,17 @@
 - name: Stage 2 - Install DuckDNS and Docker on the Staging EC2 Instance
   hosts: ec2_staging
   vars:
-  remote_ec2_user: ubuntu
-  # your DuckDNS subdomain (without the .duckdns.org part)
-  duckdns_domain: uws-devops-staging-b01841920
+    remote_ec2_user: ubuntu
+    # your DuckDNS subdomain (without the .duckdns.org part)
+    duckdns_domain: uws-devops-staging-b01841920
   remote_user: "{{ remote_ec2_user }}"
   become: yes
   become_method: sudo
 
-    tasks:
+  tasks:
     # --------- Setup DuckDNS on the staging instance ---------
     # Setup duckdns client to update the public IP address of the staging instance with the duckdns service
     - name: Ensure curl is installed
-      become: yes
       package:
         name: curl
         state: present
@@ -122,7 +121,7 @@
   hosts: localhost
   connection: local
   vars:
-  duckdns_domain: uws-devops-staging
+    duckdns_domain: uws-devops-staging
 
   tasks:
     - name: Get the EC2 IP from the previous stage
@@ -141,4 +140,3 @@
     - name: Final Result
       debug:
         msg: "Success! {{ duckdns_domain }}.duckdns.org is now pointing to {{ ec2_ip }}"
-
