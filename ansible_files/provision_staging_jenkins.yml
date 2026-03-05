@@ -40,9 +40,9 @@
 - name: Stage 2 - Install DuckDNS and Docker on the Staging EC2 Instance
   hosts: ec2_staging
   vars:
-        remote_ec2_user: ubuntu
-    # your DuckDNS subdomain (without the .duckdns.org part)
-    duckdns_domain: uws-devops-staging-b01841920
+  remote_ec2_user: ubuntu
+  # your DuckDNS subdomain (without the .duckdns.org part)
+  duckdns_domain: uws-devops-staging-b01841920
   remote_user: "{{ remote_ec2_user }}"
   become: yes
   become_method: sudo
@@ -122,7 +122,7 @@
   hosts: localhost
   connection: local
   vars:
-    duckdns_domain: uws-devops-staging
+  duckdns_domain: uws-devops-staging
 
   tasks:
     - name: Get the EC2 IP from the previous stage
